@@ -1,6 +1,8 @@
 #!/bin/bash
 
-git --work-tree=~/.hc-dot --git-dir=~/.hc-dot/.git pull origin master
+cd ~/.hc-dot
+git pull origin master
+cd -
 bash ~/.hc-dot/dotremove
 git clone https://github.com/horea-chivu/hc-dot.git ~/.hc-dot
 bash ~/.hc-dot/dotinstall
