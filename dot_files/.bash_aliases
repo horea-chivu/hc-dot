@@ -9,6 +9,10 @@ alias gs='git status'
 alias gl='git log'
 alias gma='git merge --abort'
 alias gg='git log --oneline --decorate --all --graph'
+alias gd='git diff'
+alias grh='git reset --hard'
+
+# HEAD^ <=> HEAD~1
 
 # Vim aliases
 alias v='vim'
@@ -17,7 +21,7 @@ alias g='gvim'
 alias gh='gvim ~'
 
 # Bash aliases
-alias c='clear && clear'
+alias cl='clear && clear'
 alias py='python3'
 
 # Node aliases
