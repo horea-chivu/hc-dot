@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Clone this repository
+git clone https://github.com/horea-chivu/hc-dot.git ~/.hc-dot
+
+# Backup old files that could possibly be replaced
+mkdir ~/.dot_backup
+mv ~/.bash_aliases ~/.dot_backup/
+mv ~/.bashrc ~/.dot_backup/
+
+# Symbolic linking files to home directory
+ln -s ~/.hc-dot/dot-files/.bash_aliases ~/
+ln -s ~/.hc-dot/dot-files/.bashrc ~/
+
+source ~/.bashrc
