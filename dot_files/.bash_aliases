@@ -23,6 +23,8 @@ alias gh='gvim ~'
 # Bash aliases
 alias cl='clear && clear'
 alias py='python3'
+alias cD='cd ~/Documents'
+alias cnr='curl -nr'
 
 # Node aliases
 alias ni='node init'
