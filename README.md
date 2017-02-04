@@ -1,8 +1,8 @@
-# Project: dot-vim
+# Project: hc-dot
 
 ## How to install?
 
-Just execute in terminal: `bash <(curl -s https://raw.githubusercontent.com/horea-chivu/hc-dot/master/dotconf)`
+Just execute in terminal: `bash <(curl -s https://raw.githubusercontent.com/horea-chivu/hc-dot/master/dotinstall)`
 
 ## How to update?
 

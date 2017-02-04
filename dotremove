@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Remove symbolic files
-sudo rm ~/.bash_aliases ~/.bashrc
+sudo rm ~/.bash_aliases ~/.bashrc ~/.gitconfig
 sudo rm -R ~/.hc-dot
