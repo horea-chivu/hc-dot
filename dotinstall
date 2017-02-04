@@ -1,17 +1,47 @@
 #!/bin/bash
 
+echo "
+
+ ██░ ██  ▄████▄  ▓█████▄  ▒█████  ▄▄▄█████▓
+▓██░ ██▒▒██▀ ▀█  ▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒
+▒██▀▀██░▒▓█    ▄ ░██   █▌▒██░  ██▒▒ ▓██░ ▒░
+░▓█ ░██ ▒▓▓▄ ▄██▒░▓█▄   ▌▒██   ██░░ ▓██▓ ░ 
+░▓█▒░██▓▒ ▓███▀ ░░▒████▓ ░ ████▓▒░  ▒██▒ ░ 
+ ▒ ░░▒░▒░ ░▒ ▒  ░ ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░   
+ ▒ ░▒░ ░  ░  ▒    ░ ▒  ▒   ░ ▒ ▒░     ░    
+ ░  ░░ ░░         ░ ░  ░ ░ ░ ░ ▒    ░      
+ ░  ░  ░░ ░         ░        ░ ░           
+        ░         ░                        
+
+"
+
 # Clone this repository
+echo "
+-- Cloning the hc-dot repository to ~/.hc-dot
+";
 git clone https://github.com/horea-chivu/hc-dot.git ~/.hc-dot
 
 # Backup old files that could possibly be replaced
+echo "
+-- Creating ~/.dot_backup directory
+"
 mkdir ~/.dot_backup
+echo "
+-- Moving your existing files to ~/.dot_backup
+"
 mv ~/.bash_aliases ~/.dot_backup/
 mv ~/.bashrc ~/.dot_backup/
 mv ~/.gitconfig ~/.dot_backup/
 
 # Symbolic linking files to home directory
+echo "
+-- Creating symbolic links for the dot files
+"
 ln -s ~/.hc-dot/dot_files/.bash_aliases ~/
 ln -s ~/.hc-dot/dot_files/.bashrc ~/
 ln -s ~/.hc-dot/dot_files/.gitconfig ~/
 
+echo "
+-- Sourcing .bashrc file
+"
 source ~/.bashrc

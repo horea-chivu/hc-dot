@@ -1,5 +1,11 @@
 #!/bin/bash
 
 # Remove symbolic files
+echo "
+-- Removing symbolic links
+"
 sudo rm ~/.bash_aliases ~/.bashrc ~/.gitconfig
+echo "
+-- Removing .hc-dot directory
+"
 sudo rm -R ~/.hc-dot

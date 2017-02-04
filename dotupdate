@@ -1,8 +1,4 @@
 #!/bin/bash
 
-cd ~/.hc-dot
-git pull origin master
-cd -
 bash ~/.hc-dot/dotremove
-git clone https://github.com/horea-chivu/hc-dot.git ~/.hc-dot
-bash ~/.hc-dot/dotinstall
+bash <(curl -s https://raw.githubusercontent.com/horea-chivu/hc-dot/master/dotinstall)
