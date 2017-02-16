@@ -1,19 +1,21 @@
 #!/bin/bash
 
 echo "
-
- ██░ ██  ▄████▄  ▓█████▄  ▒█████  ▄▄▄█████▓
-▓██░ ██▒▒██▀ ▀█  ▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒
-▒██▀▀██░▒▓█    ▄ ░██   █▌▒██░  ██▒▒ ▓██░ ▒░
-░▓█ ░██ ▒▓▓▄ ▄██▒░▓█▄   ▌▒██   ██░░ ▓██▓ ░ 
-░▓█▒░██▓▒ ▓███▀ ░░▒████▓ ░ ████▓▒░  ▒██▒ ░ 
- ▒ ░░▒░▒░ ░▒ ▒  ░ ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░   
- ▒ ░▒░ ░  ░  ▒    ░ ▒  ▒   ░ ▒ ▒░     ░    
- ░  ░░ ░░         ░ ░  ░ ░ ░ ░ ▒    ░      
- ░  ░  ░░ ░         ░        ░ ░           
-        ░         ░                        
-
+ ██░ ██  ▄████▄     ▓█████▄  ▒█████  ▄▄▄█████▓
+▓██░ ██▒▒██▀ ▀█     ▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒
+▒██▀▀██░▒▓█    ▄    ░██   █▌▒██░  ██▒▒ ▓██░ ▒░
+░▓█ ░██ ▒▓▓▄ ▄██▒   ░▓█▄   ▌▒██   ██░░ ▓██▓ ░ 
+░▓█▒░██▓▒ ▓███▀ ░   ░▒████▓ ░ ████▓▒░  ▒██▒ ░ 
+ ▒ ░░▒░▒░ ░▒ ▒  ░    ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░   
+ ▒ ░▒░ ░  ░  ▒       ░ ▒  ▒   ░ ▒ ▒░     ░    
+ ░  ░░ ░░            ░ ░  ░ ░ ░ ░ ▒    ░      
+ ░  ░  ░░ ░            ░        ░ ░           
+        ░            ░                        
 "
+
+HOME_PREFIX=~/
+DOT_PREFIX=~/.hc-dot/dot_files/
+declare -a DOT_FILES=(.bashrc .bash_aliases .gitconfig)
 
 # Clone this repository
 echo "
@@ -25,21 +27,25 @@ git clone https://github.com/horea-chivu/hc-dot.git ~/.hc-dot
 echo "
 -- Creating ~/.dot_backup directory
 "
-mkdir ~/.dot_backup
+if [ ! -d ~/.dot_backup ]; then
+    mkdir ~/.dot_backup
+fi
 echo "
 -- Moving your existing files to ~/.dot_backup
-"
-mv ~/.bash_aliases ~/.dot_backup/
-mv ~/.bashrc ~/.dot_backup/
-mv ~/.gitconfig ~/.dot_backup/
-
-# Symbolic linking files to home directory
-echo "
 -- Creating symbolic links for the dot files
 "
-ln -s ~/.hc-dot/dot_files/.bash_aliases ~/
-ln -s ~/.hc-dot/dot_files/.bashrc ~/
-ln -s ~/.hc-dot/dot_files/.gitconfig ~/
+for file in ${DOT_FILES[@]}; do
+    if [ -e $HOME_PREFIX$file ]; then
+        mv $HOME_PREFIX$file ~/.dot_backup
+    else
+        echo "File does not exist: $file"
+    fi
+    if [ -e $DOT_PREFIX$file ]; then
+        ln -s $DOT_PREFIX$file ~/
+    else
+        echo "ERROR: File does not exist in ~/.hc-dot: $file"
+    fi
+done
 
 echo "
 -- Sourcing .bashrc file

@@ -1,10 +1,20 @@
 #!/bin/bash
 
+HOME_PREFIX=~/
+declare -a DOT_FILES=(.bashrc .bash_aliases .gitconfig)
+
 # Remove symbolic files
 echo "
 -- Removing symbolic links
 "
-sudo rm ~/.bash_aliases ~/.bashrc ~/.gitconfig
+for file in ${DOT_FILES[@]}; do
+    if [ -e $HOME_PREFIX$file ]; then
+        rm $HOME_PREFIX$file ~/.dot_backup
+    else
+        echo "File does not exist: $file"
+    fi
+done
+
 echo "
 -- Removing .hc-dot directory
 "
