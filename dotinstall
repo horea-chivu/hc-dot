@@ -15,7 +15,7 @@ echo "
 
 HOME_PREFIX=~/
 DOT_PREFIX=~/.hc-dot/dot_files/
-declare -a DOT_FILES=(.bashrc .bash_aliases .gitconfig)
+declare -a DOT_FILES=(.bashrc .bash_aliases .gitconfig .ctags)
 
 # Clone this repository
 echo "
@@ -46,6 +46,19 @@ for file in ${DOT_FILES[@]}; do
         echo "ERROR: File does not exist in ~/.hc-dot: $file"
     fi
 done
+
+if [ ! -e ~/.config ]; then
+    mkdir ~/.config
+fi
+
+if [ ! -e ~/.config/terminator ]; then
+    mv ~/.config/terminator ~/.dot_backup
+fi
+
+echo "
+-- Linking terminator config directory
+"
+ln -s ~/.hc-dot/terminator ~/.config/
 
 echo "
 -- Sourcing .bashrc file

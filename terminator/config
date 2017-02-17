@@ -1,0 +1,22 @@
+[global_config]
+  geometry_hinting = False
+  hide_on_lose_focus = True
+  title_font = Monaco 14
+  title_transmit_bg_color = "#767676"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.0
+    background_image = None
+    background_type = transparent
+    font = Monaco 14
+    use_system_font = False
