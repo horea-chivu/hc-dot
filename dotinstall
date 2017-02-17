@@ -51,7 +51,7 @@ if [ ! -e ~/.config ]; then
     mkdir ~/.config
 fi
 
-if [ ! -e ~/.config/terminator ]; then
+if [ -e ~/.config/terminator ]; then
     mv ~/.config/terminator ~/.dot_backup
 fi
 
