@@ -31,6 +31,9 @@ alias cD='cd ~/Documents'
 alias gnr='curl -nr'                                    # Search for all lines that contain a certain expresion(to be completed with <expresion>)
 alias gnri='curl -nri'                                  # Same as above, but insensitive
 
+# Linux Mint aliases
+alias go='gvfs-open'
+
 # Node aliases
 alias ni='node init'
 alias niy='node -y init'
