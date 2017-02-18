@@ -15,8 +15,6 @@ for file in ${DOT_FILES[@]}; do
     fi
 done
 
-rm ~/.config/terminator
-
 echo "
 -- Removing .hc-dot directory
 "
