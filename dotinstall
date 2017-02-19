@@ -14,6 +14,7 @@ echo "
 "
 
 HOME_PREFIX=~/
+BACKUP_PREFIX=~/.dot_backup/
 DOT_PREFIX=~/.hc-dot/dot_files/
 declare -a DOT_FILES=(.bashrc .bash_aliases .gitconfig .ctags)
 
@@ -27,7 +28,7 @@ git clone https://github.com/horea-chivu/hc-dot.git ~/.hc-dot
 echo "
 -- Creating ~/.dot_backup directory
 "
-if [ ! -d ~/.dot_backup ]; then
+if [ ! -e ~/.dot_backup ]; then
     mkdir ~/.dot_backup
 fi
 echo "
@@ -36,7 +37,9 @@ echo "
 "
 for file in ${DOT_FILES[@]}; do
     if [ -e $HOME_PREFIX$file ]; then
-        mv $HOME_PREFIX$file ~/.dot_backup
+        if [ ! -e $BACKUP_PREFIX$file ]; then
+            mv $HOME_PREFIX$file ~/.dot_backup
+        fi
     else
         echo "File does not exist: $file"
     fi
