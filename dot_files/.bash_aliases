@@ -1,6 +1,7 @@
 # Git aliases
 
 alias gi='git init'                                     # Initialize a git repository.
+alias gclone='git clone'                                # Clone the specified repository(to be completed with <repository>)
 alias gaa='git add .'                                   # Track all files from this directory and subdirectories(if not in .gitignore).
 alias gap='git add -p'                                  # Interactive tracking.
 alias gc='git commit'                                   # Commits tracked files and open default editor for message.
