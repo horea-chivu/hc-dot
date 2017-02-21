@@ -45,3 +45,9 @@ alias nisd='node --save-dev install'
 alias nug='node update -g'
 alias nu='node update'
 alias np='node prune'
+
+# Php/Composer
+alias ps='php -S localhost:8080'
+alias ci='composer init'
+alias cr='composer require'
+alias cgr='composer global require'
