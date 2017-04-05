@@ -24,14 +24,16 @@ alias grh='git reset --hard'                            # Reset this repo file s
 alias v='vim'
 alias n='nvim'
 alias g='gvim'
+alias m='mvim'
 
 # Bash aliases
+alias ll='ls -alF'
 alias cl='clear && clear'
 alias p2='python'
 alias p='python3'
 alias cD='cd ~/Documents'
-alias gnr='curl -nr'                                    # Search for all lines that contain a certain expresion(to be completed with <expresion>)
-alias gnri='curl -nri'                                  # Same as above, but insensitive
+alias gnr='grep -nr'                                    # Search for all lines that contain a certain expresion(to be completed with <expresion>)
+alias gnri='grep -nri'                                  # Same as above, but insensitive
 
 # Linux Mint aliases
 alias go='gvfs-open'
