@@ -1,19 +1,34 @@
 #!/bin/bash
 
 HOME_PREFIX=~/
-declare -a DOT_FILES=(.bashrc .bash_aliases .gitconfig .ctags)
+declare -a LINUX_DOT_FILES=(.bashrc .bash_aliases .gitconfig .ctags)
+declare -a MAC_DOT_FILES=(.bash_profile .bash_aliases .gitconfig .ctags)
 
-# Remove symbolic files
-echo "
--- Removing symbolic links
-"
-for file in ${DOT_FILES[@]}; do
-    if [ -e $HOME_PREFIX$file ]; then
-        rm $HOME_PREFIX$file ~/.dot_backup
-    else
-        echo "File does not exist: $file"
-    fi
-done
+if [ "$(uname)" == "Darwin" ]; then
+    # Remove symbolic files
+    echo "
+    -- Removing symbolic links
+    "
+    for file in ${MAC_DOT_FILES[@]}; do
+        if [ -e $HOME_PREFIX$file ]; then
+            rm -f $HOME_PREFIX$file
+        else
+            echo "File does not exist: $file"
+        fi
+    done
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Remove symbolic files
+    echo "
+    -- Removing symbolic links
+    "
+    for file in ${LINUX_DOT_FILES[@]}; do
+        if [ -e $HOME_PREFIX$file ]; then
+            rm -f $HOME_PREFIX$file
+        else
+            echo "File does not exist: $file"
+        fi
+    done
+fi
 
 echo "
 -- Removing .hc-dot directory

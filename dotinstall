@@ -16,7 +16,8 @@ echo "
 HOME_PREFIX=~/
 BACKUP_PREFIX=~/.dot_backup/
 DOT_PREFIX=~/.hc-dot/dot_files/
-declare -a DOT_FILES=(.bashrc .bash_aliases .gitconfig .ctags)
+declare -a LINUX_DOT_FILES=(.bashrc .bash_aliases .gitconfig .ctags)
+declare -a MAC_DOT_FILES=(.bash_profile .bash_aliases .gitconfig .ctags)
 
 # Clone this repository
 echo "
@@ -31,26 +32,58 @@ echo "
 if [ ! -e ~/.dot_backup ]; then
     mkdir ~/.dot_backup
 fi
-echo "
--- Moving your existing files to ~/.dot_backup
--- Creating symbolic links for the dot files
-"
-for file in ${DOT_FILES[@]}; do
-    if [ -e $HOME_PREFIX$file ]; then
-        if [ ! -e $BACKUP_PREFIX$file ]; then
-            mv $HOME_PREFIX$file ~/.dot_backup
-        fi
-    else
-        echo "File does not exist: $file"
-    fi
-    if [ -e $DOT_PREFIX$file ]; then
-        ln -s $DOT_PREFIX$file ~/
-    else
-        echo "ERROR: File does not exist in ~/.hc-dot: $file"
-    fi
-done
 
-echo "
--- Sourcing .bashrc file
-"
-source ~/.bashrc
+if [ "$(uname)" == "Darwin" ]; then
+    # Do something under Mac OS X platform
+
+    echo "
+    -- Moving your existing files to ~/.dot_backup
+    -- Creating symbolic links for the dot files
+    "
+    for file in ${MAC_DOT_FILES[@]}; do
+        if [ -e $HOME_PREFIX$file ]; then
+            if [ ! -e $BACKUP_PREFIX$file ]; then
+                mv $HOME_PREFIX$file ~/.dot_backup
+            fi
+        else
+            echo "File does not exist: $file"
+        fi
+        if [ -e $DOT_PREFIX$file ]; then
+            ln -s $DOT_PREFIX$file ~/
+        else
+            echo "ERROR: File does not exist in ~/.hc-dot: $file"
+        fi
+    done
+
+    echo "
+    -- Sourcing .bashrc file
+    "
+    source ~/.bashrc
+
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Do something under GNU/Linux platform
+
+    echo "
+    -- Moving your existing files to ~/.dot_backup
+    -- Creating symbolic links for the dot files
+    "
+    for file in ${LINUX_DOT_FILES[@]}; do
+        if [ -e $HOME_PREFIX$file ]; then
+            if [ ! -e $BACKUP_PREFIX$file ]; then
+                mv $HOME_PREFIX$file ~/.dot_backup
+            fi
+        else
+            echo "File does not exist: $file"
+        fi
+        if [ -e $DOT_PREFIX$file ]; then
+            ln -s $DOT_PREFIX$file ~/
+        else
+            echo "ERROR: File does not exist in ~/.hc-dot: $file"
+        fi
+    done
+
+    echo "
+    -- Sourcing .bash_profile file
+    "
+    source ~/.bash_profile
+fi
