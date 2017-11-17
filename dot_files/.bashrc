@@ -116,8 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Only load Liquid Prompt in interactive shells, not from a script or from scp
-[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
-
-
 PATH=~/.config/composer/vendor/bin:$PATH
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/eclecticarth/.sdkman"
+[[ -s "/home/eclecticarth/.sdkman/bin/sdkman-init.sh" ]] && source "/home/eclecticarth/.sdkman/bin/sdkman-init.sh"
+export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"

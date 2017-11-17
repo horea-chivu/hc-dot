@@ -24,7 +24,7 @@ alias grh='git reset --hard'                            # Reset this repo file s
 alias v='vim'
 alias n='nvim'
 alias g='gvim'
-alias m='mvim'
+# alias m='mvim'
 
 # Bash aliases
 alias ll='ls -alF'
@@ -36,7 +36,7 @@ alias gnr='grep -nr'                                    # Search for all lines t
 alias gnri='grep -nri'                                  # Same as above, but insensitive
 
 # Linux Mint aliases
-alias go='gvfs-open'
+# alias go='gvfs-open'
 
 # Node aliases
 alias ni='node init'
@@ -49,7 +49,6 @@ alias nu='node update'
 alias np='node prune'
 
 # Php/Composer
-alias ps='php -S localhost:8080'
 alias ci='composer init'
 alias cr='composer require'
 alias cgr='composer global require'

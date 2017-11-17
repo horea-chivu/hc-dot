@@ -16,7 +16,7 @@ echo "
 HOME_PREFIX=~/
 BACKUP_PREFIX=~/.dot_backup/
 DOT_PREFIX=~/.hc-dot/dot_files/
-declare -a LINUX_DOT_FILES=(.bashrc .bash_aliases .gitconfig .ctags)
+declare -a LINUX_DOT_FILES=(.bash_aliases .gitconfig .ctags)
 declare -a MAC_DOT_FILES=(.bash_profile .bash_aliases .gitconfig .ctags)
 
 # Clone this repository
