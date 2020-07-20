@@ -21,8 +21,10 @@ alias grh='git reset --hard'                            # Reset this repo file s
 # HEAD^ <=> HEAD~1
 
 # Vim aliases
+alias vim='nvim'
 alias v='vim'
 alias n='nvim'
+alias gvim='vimr'
 alias g='gvim'
 # alias m='mvim'
 
